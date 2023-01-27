@@ -81,4 +81,35 @@ public class ProductManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void searchByAuthor() {
+
+        manager.add(book1);
+        manager.add(book2);
+        manager.add(book3);
+
+        Product[] expected = {book1, book3};
+        Product[] actual = manager.searchBy("Net");
+
+        Assertions.assertArrayEquals(expected, actual);
+
+
+    }
+
+    @Test
+    public void searchByMaker() {
+
+
+        manager.add(smart1);
+        manager.add(smart3);
+        manager.add(smart2);
+
+        Product[] expected = {smart1, smart2};
+        Product[] actual = manager.searchBy("nok");
+
+        Assertions.assertArrayEquals(expected, actual);
+
+
+    }
 }
