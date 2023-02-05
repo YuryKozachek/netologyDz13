@@ -20,7 +20,13 @@ public class ProductRepo {
         return productsArray;
     }
 
-    public void delById(int id) {
+    public void removeById(int id) {
+
+        Product productId = findById(id);
+        if (productId == null) {
+            throw new NotFoundException("Element with id: " + id + " not found");
+        }
+
         Product[] delArray = new Product[productsArray.length - 1];
         int i = 0;
         for (Product prod : productsArray) {
@@ -30,5 +36,15 @@ public class ProductRepo {
             }
         }
         productsArray = delArray;
+    }
+
+    public Product findById(int id) {
+
+        for (Product prod : productsArray) {
+            if (prod.getId() == id) {
+                return prod;
+            }
+        }
+        return null;
     }
 }
