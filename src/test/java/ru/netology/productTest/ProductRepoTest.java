@@ -2,10 +2,7 @@ package ru.netology.productTest;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.netology.product.Book;
-import ru.netology.product.Product;
-import ru.netology.product.ProductRepo;
-import ru.netology.product.Smartphone;
+import ru.netology.product.*;
 
 public class ProductRepoTest {
     ProductRepo repo = new ProductRepo();
@@ -27,14 +24,14 @@ public class ProductRepoTest {
         repo.addNewProd(book2);
         repo.addNewProd(smart3);
 
-        Product[] expected = {book1, smart1, book2, smart3};
-        Product[] actual = repo.findAll();
+            Product[] expected = {book1, smart1, book2, smart3};
+            Product[] actual = repo.findAll();
 
-        Assertions.assertArrayEquals(expected, actual);
+            Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void delProductById() {
+    public void removeProductsById() {
 
 
         repo.addNewProd(book1);
@@ -43,8 +40,8 @@ public class ProductRepoTest {
         repo.addNewProd(smart3);
         repo.addNewProd(smart2);
 
-        repo.delById(1);
-        repo.delById(17);
+        repo.removeById(1);
+        repo.removeById(17);
 
         Product[] expected = {smart1, book3, smart2};
         Product[] actual = repo.findAll();
@@ -64,6 +61,36 @@ public class ProductRepoTest {
         Product[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void removeExistingProductById() {
+
+
+        repo.addNewProd(book1);
+        repo.addNewProd(book2);
+        repo.addNewProd(book3);
+
+        repo.removeById(2);
+
+
+        Product[] expected = {book1, book3};
+        Product[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void removeNonExistingProductById() {
+
+
+        repo.addNewProd(book1);
+        repo.addNewProd(book2);
+        repo.addNewProd(book3);
+
+        Assertions.assertThrows(NotFoundException.class, () ->
+                repo.removeById(100));
+
     }
 
 }

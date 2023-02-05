@@ -41,13 +41,11 @@ public class ProductManagerTest {
         manager.add(book2);
         manager.add(smart1);
         manager.add(smart2);
-        manager.add(book2);
         manager.add(book1);
-        manager.add(book2);
         manager.add(smart1);
         manager.add(smart2);
 
-        Product[] expected = {book2, book1, book2, book2, book1, book2};
+        Product[] expected = {book2, book1, book2, book1};
         Product[] actual = manager.searchBy("Ja");
 
         Assertions.assertArrayEquals(expected, actual);
