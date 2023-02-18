@@ -33,25 +33,25 @@ public class ProductManagerTest {
 
     }
 
-    @Test
-    public void searchByAllBook() {
+//    @Test
+//    public void searchByAllBook() {
+//
+//        manager.add(book2);
+//        manager.add(book1);
+//        manager.add(book2);
+//        manager.add(smart1);
+//        manager.add(smart2);
+//        manager.add(book1);
+//        manager.add(smart1);
+//        manager.add(smart2);
+//
+//        Product[] expected = {book2, book1, book2, book1};
+//        Product[] actual = manager.searchBy("Ja");
+//
+//        Assertions.assertArrayEquals(expected, actual);
+//
 
-        manager.add(book2);
-        manager.add(book1);
-        manager.add(book2);
-        manager.add(smart1);
-        manager.add(smart2);
-        manager.add(book1);
-        manager.add(smart1);
-        manager.add(smart2);
-
-        Product[] expected = {book2, book1, book2, book1};
-        Product[] actual = manager.searchBy("Ja");
-
-        Assertions.assertArrayEquals(expected, actual);
-
-
-    }
+//    }
 
     @Test
     public void searchByOneProd() {

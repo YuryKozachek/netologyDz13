@@ -8,12 +8,19 @@ public class ProductRepo {
     }
 
     public void addNewProd(Product product) {
+
+        if (findById(product.id) == product) {
+            throw new AlreadyExistsException("Element with id: " + product.id + " already added");
+        }
+
         Product[] newArray = new Product[productsArray.length + 1];
         for (int i = 0; i < productsArray.length; i++) {
             newArray[i] = productsArray[i];
         }
+
         newArray[newArray.length - 1] = product;
         productsArray = newArray;
+
     }
 
     public Product[] findAll() {
@@ -47,4 +54,5 @@ public class ProductRepo {
         }
         return null;
     }
+
 }

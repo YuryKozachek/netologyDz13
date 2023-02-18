@@ -24,10 +24,10 @@ public class ProductRepoTest {
         repo.addNewProd(book2);
         repo.addNewProd(smart3);
 
-            Product[] expected = {book1, smart1, book2, smart3};
-            Product[] actual = repo.findAll();
+        Product[] expected = {book1, smart1, book2, smart3};
+        Product[] actual = repo.findAll();
 
-            Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -49,19 +49,19 @@ public class ProductRepoTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    @Test
-    public void addProductSame() {
-
-        repo.addNewProd(book1);
-        repo.addNewProd(book1);
-        repo.addNewProd(smart3);
-        repo.addNewProd(smart3);
-
-        Product[] expected = {book1, book1, smart3, smart3};
-        Product[] actual = repo.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
+//    @Test
+//    public void addProductSame() {
+//
+//        repo.addNewProd(book1);
+//        repo.addNewProd(book1);
+//        repo.addNewProd(smart3);
+//        repo.addNewProd(smart3);
+//
+//        Product[] expected = {book1, book1, smart3, smart3};
+//        Product[] actual = repo.findAll();
+//
+//        Assertions.assertArrayEquals(expected, actual);
+//    }
 
     @Test
     public void removeExistingProductById() {
@@ -92,5 +92,35 @@ public class ProductRepoTest {
                 repo.removeById(100));
 
     }
+
+    @Test
+    public void addNewProduct() {
+
+
+        repo.addNewProd(book1);
+        repo.addNewProd(book2);
+        repo.addNewProd(book3);
+        repo.addNewProd(smart1);
+
+
+        Product[] expected = {book1, book2, book3, smart1};
+        Product[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void addProductWithSameId() {
+
+
+        repo.addNewProd(book1);
+        repo.addNewProd(book2);
+        repo.addNewProd(smart1);
+
+
+        Assertions.assertThrows(AlreadyExistsException.class, () ->
+                repo.addNewProd(book2));
+    }
+
 
 }
